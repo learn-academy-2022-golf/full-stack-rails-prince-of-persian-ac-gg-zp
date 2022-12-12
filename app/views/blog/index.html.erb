@@ -1,4 +1,4 @@
 <h1>Blogs</h1>
-<% @blogs.map do |title| %>
-    <h3><%= title.title %></h3>
+<% @blogs.map do |blog| %>
+    <h3><%= link_to blog.title, blog_path(blog) %></h3>
 <% end %>
