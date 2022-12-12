@@ -10,17 +10,17 @@ class BlogController < ApplicationController
         @blog = Blog.new
     end
     def create
-        @blog = Blog.create (blog_params)
-        if @blog.valid?
-            redirect_to blogs_path
-        else 
-            # respond_to do |format|
-            #     format.html{render :text @blog.html_content}
-            # end 
-            redirect_to new_blog_path 
-            @error = @blog.errors.full_messages
+        @blog = Blog.new(blog_params)
+       
+        respond_to do |format|
+          if @blog.save
+           format.html {redirect_to blogs_path}
+          else
+            format.html { render :new, status: :unprocessable_entity }
+             
+          end
         end
-    end
+      end
 private 
     def blog_params
         params.require(:blog).permit(:title, :content)
