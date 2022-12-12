@@ -2,3 +2,4 @@
 <% @blogs.map do |blog| %>
     <h3><%= link_to blog.title, blog_path(blog) %></h3>
 <% end %>
+<%= link_to 'New Blog', new_blog_path %>
