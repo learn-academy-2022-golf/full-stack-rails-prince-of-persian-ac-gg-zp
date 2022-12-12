@@ -13,7 +13,12 @@ class BlogController < ApplicationController
         @blog = Blog.create (blog_params)
         if @blog.valid?
             redirect_to blogs_path
-        
+        else 
+            # respond_to do |format|
+            #     format.html{render :text @blog.html_content}
+            # end 
+            redirect_to new_blog_path 
+            @error = @blog.errors.full_messages
         end
     end
 private 
