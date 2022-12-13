@@ -1,3 +1,4 @@
 <h2><%= @blog.title %></h2>
 <p><%= @blog.content %></p>
 <%= link_to "Back To Home", blogs_path %>
+<%= link_to "Delete", delete_blog_path(@blog), data: {turbo_method: :delete, turbo_confirm:"Are you sure?" } %>
